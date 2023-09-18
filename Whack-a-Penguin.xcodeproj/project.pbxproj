@@ -22,6 +22,7 @@
 		65E68D1C2AB88F3C00EA3F3A /* penguinGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E68D142AB88F3C00EA3F3A /* penguinGood@2x.png */; };
 		65E68D1D2AB88F3C00EA3F3A /* whackMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E68D152AB88F3C00EA3F3A /* whackMask@2x.png */; };
 		65E68D1E2AB88F3C00EA3F3A /* whackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E68D162AB88F3C00EA3F3A /* whackBackground@2x.png */; };
+		65E68D202AB8958100EA3F3A /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E68D1F2AB8958100EA3F3A /* WhackSlot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		65E68D142AB88F3C00EA3F3A /* penguinGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguinGood@2x.png"; sourceTree = "<group>"; };
 		65E68D152AB88F3C00EA3F3A /* whackMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackMask@2x.png"; sourceTree = "<group>"; };
 		65E68D162AB88F3C00EA3F3A /* whackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackBackground@2x.png"; sourceTree = "<group>"; };
+		65E68D1F2AB8958100EA3F3A /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				65E68CF72AB88DA600EA3F3A /* AppDelegate.swift */,
 				65E68CF92AB88DA600EA3F3A /* GameScene.sks */,
 				65E68CFD2AB88DA600EA3F3A /* GameScene.swift */,
+				65E68D1F2AB8958100EA3F3A /* WhackSlot.swift */,
 				65E68CFF2AB88DA600EA3F3A /* GameViewController.swift */,
 				65E68D012AB88DA600EA3F3A /* Main.storyboard */,
 				65E68D042AB88DA700EA3F3A /* Assets.xcassets */,
@@ -182,6 +185,7 @@
 			files = (
 				65E68CFE2AB88DA600EA3F3A /* GameScene.swift in Sources */,
 				65E68D002AB88DA600EA3F3A /* GameViewController.swift in Sources */,
+				65E68D202AB8958100EA3F3A /* WhackSlot.swift in Sources */,
 				65E68CF82AB88DA600EA3F3A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
