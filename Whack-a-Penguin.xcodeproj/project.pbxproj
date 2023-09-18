@@ -23,6 +23,8 @@
 		65E68D1D2AB88F3C00EA3F3A /* whackMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E68D152AB88F3C00EA3F3A /* whackMask@2x.png */; };
 		65E68D1E2AB88F3C00EA3F3A /* whackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E68D162AB88F3C00EA3F3A /* whackBackground@2x.png */; };
 		65E68D202AB8958100EA3F3A /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E68D1F2AB8958100EA3F3A /* WhackSlot.swift */; };
+		65E68D222AB8A85000EA3F3A /* SmokeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65E68D212AB8A85000EA3F3A /* SmokeParticle.sks */; };
+		65E68D262AB8A87E00EA3F3A /* MudParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65E68D252AB8A87E00EA3F3A /* MudParticle.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		65E68D152AB88F3C00EA3F3A /* whackMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackMask@2x.png"; sourceTree = "<group>"; };
 		65E68D162AB88F3C00EA3F3A /* whackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackBackground@2x.png"; sourceTree = "<group>"; };
 		65E68D1F2AB8958100EA3F3A /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
+		65E68D212AB8A85000EA3F3A /* SmokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeParticle.sks; sourceTree = "<group>"; };
+		65E68D252AB8A87E00EA3F3A /* MudParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MudParticle.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 				65E68CF72AB88DA600EA3F3A /* AppDelegate.swift */,
 				65E68CF92AB88DA600EA3F3A /* GameScene.sks */,
 				65E68CFD2AB88DA600EA3F3A /* GameScene.swift */,
+				65E68D212AB8A85000EA3F3A /* SmokeParticle.sks */,
+				65E68D252AB8A87E00EA3F3A /* MudParticle.sks */,
 				65E68D1F2AB8958100EA3F3A /* WhackSlot.swift */,
 				65E68CFF2AB88DA600EA3F3A /* GameViewController.swift */,
 				65E68D012AB88DA600EA3F3A /* Main.storyboard */,
@@ -161,11 +167,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E68D222AB8A85000EA3F3A /* SmokeParticle.sks in Resources */,
 				65E68D1D2AB88F3C00EA3F3A /* whackMask@2x.png in Resources */,
 				65E68D172AB88F3C00EA3F3A /* whackBad.caf in Resources */,
 				65E68D032AB88DA600EA3F3A /* Main.storyboard in Resources */,
 				65E68CFA2AB88DA600EA3F3A /* GameScene.sks in Resources */,
 				65E68D052AB88DA700EA3F3A /* Assets.xcassets in Resources */,
+				65E68D262AB8A87E00EA3F3A /* MudParticle.sks in Resources */,
 				65E68D1E2AB88F3C00EA3F3A /* whackBackground@2x.png in Resources */,
 				65E68D1B2AB88F3C00EA3F3A /* whackHole@2x.png in Resources */,
 				65E68D082AB88DA700EA3F3A /* LaunchScreen.storyboard in Resources */,

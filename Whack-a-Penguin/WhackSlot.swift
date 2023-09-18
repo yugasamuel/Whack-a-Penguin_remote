@@ -15,7 +15,7 @@ class WhackSlot: SKNode {
     
     func configure(at position: CGPoint) {
         self.position = position
-
+        
         let sprite = SKSpriteNode(imageNamed: "whackHole")
         addChild(sprite)
         
@@ -23,7 +23,7 @@ class WhackSlot: SKNode {
         cropNode.position = CGPoint(x: 0, y: 15)
         cropNode.zPosition = 1
         cropNode.maskNode = SKSpriteNode(imageNamed: "whackMask")
-
+        
         charNode = SKSpriteNode(imageNamed: "penguinGood")
         charNode.position = CGPoint(x: 0, y: -90)
         charNode.name = "character"
@@ -34,11 +34,14 @@ class WhackSlot: SKNode {
     
     func show(hideTime: Double) {
         if isVisible { return }
-
+        
+        charNode.xScale = 1
+        charNode.yScale = 1
+        
         charNode.run(SKAction.moveBy(x: 0, y: 80, duration: 0.05))
         isVisible = true
         isHit = false
-
+        
         if Int.random(in: 0...2) == 0 {
             charNode.texture = SKTexture(imageNamed: "penguinGood")
             charNode.name = "charFriend"
@@ -47,7 +50,6 @@ class WhackSlot: SKNode {
             charNode.name = "charEnemy"
         }
         
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + (hideTime * 3.5)) { [weak self] in
             self?.hide()
         }
@@ -55,9 +57,27 @@ class WhackSlot: SKNode {
     
     func hide() {
         if !isVisible { return }
-
+        
         charNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.05))
         isVisible = false
+    }
+    
+    func hit() {
+        if let smokeParticle = SKEmitterNode(fileNamed: "SmokeParticle") {
+            smokeParticle.position = charNode.position
+            addChild(smokeParticle)
+            
+            let removeParticle = SKAction.run { smokeParticle.removeFromParent() }
+            
+            let removeDelay = SKAction.wait(forDuration: 1.0)
+            smokeParticle.run(SKAction.sequence([removeDelay, removeParticle]))
+        }
+        isHit = true
+        
+        let delay = SKAction.wait(forDuration: 0.25)
+        let hide = SKAction.moveBy(x: 0, y: -80, duration: 0.5)
+        let notVisible = SKAction.run { [unowned self] in self.isVisible = false }
+        charNode.run(SKAction.sequence([delay, hide, notVisible]))
     }
     
 }

@@ -10,6 +10,7 @@ import SpriteKit
 class GameScene: SKScene {
     var slots = [WhackSlot]()
     var popupTime = 0.85
+    var numRounds = 0
     
     var gameScore: SKLabelNode!
     var score = 0 {
@@ -24,7 +25,7 @@ class GameScene: SKScene {
         background.blendMode = .replace
         background.zPosition = -1
         addChild(background)
-
+        
         gameScore = SKLabelNode(fontNamed: "Chalkduster")
         gameScore.text = "Score: 0"
         gameScore.position = CGPoint(x: 8, y: 8)
@@ -41,8 +42,30 @@ class GameScene: SKScene {
             self?.createEnemy()
         }
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        let tappedNodes = nodes(at: location)
+        
+        for node in tappedNodes {
+            guard let whackSlot = node.parent?.parent as? WhackSlot else { continue }
+            if !whackSlot.isVisible { continue }
+            if whackSlot.isHit { continue }
+            whackSlot.hit()
+
+            if node.name == "charFriend" {
+                score -= 5
+
+                run(SKAction.playSoundFileNamed("whackBad.caf", waitForCompletion: false))
+            } else if node.name == "charEnemy" {
+                whackSlot.charNode.xScale = 0.85
+                whackSlot.charNode.yScale = 0.85
+                score += 1
+
+                run(SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false))
+            }
+        }
     }
     
     func createSlot(at position: CGPoint) {
@@ -53,20 +76,40 @@ class GameScene: SKScene {
     }
     
     func createEnemy() {
-        popupTime *= 0.991
+        numRounds += 1
 
+        if numRounds >= 10 {
+            for slot in slots {
+                slot.hide()
+            }
+
+            let gameOver = SKSpriteNode(imageNamed: "gameOver")
+            gameOver.position = CGPoint(x: 512, y: 384)
+            gameOver.zPosition = 1
+            addChild(gameOver)
+            
+            gameScore.text = "Final Score: \(score)"
+            gameScore.position = CGPoint(x: 512, y: 455)
+            gameScore.horizontalAlignmentMode = .center
+            gameScore.fontSize = 48
+
+            return
+        }
+        
+        popupTime *= 0.991
+        
         slots.shuffle()
         slots[0].show(hideTime: popupTime)
-
+        
         if Int.random(in: 0...12) > 4 { slots[1].show(hideTime: popupTime) }
         if Int.random(in: 0...12) > 8 {  slots[2].show(hideTime: popupTime) }
         if Int.random(in: 0...12) > 10 { slots[3].show(hideTime: popupTime) }
         if Int.random(in: 0...12) > 11 { slots[4].show(hideTime: popupTime)  }
-
+        
         let minDelay = popupTime / 2.0
         let maxDelay = popupTime * 2
         let delay = Double.random(in: minDelay...maxDelay)
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             self?.createEnemy()
         }
